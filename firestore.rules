@@ -1,0 +1,42 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() { return request.auth != null; }
+    function userDoc() { return get(/databases/$(database)/documents/users/$(request.auth.uid)); }
+    function sameEmpresa(empresaId) { return isSignedIn() && userDoc().data.empresaId == empresaId; }
+    function isGestor(empresaId) { return sameEmpresa(empresaId) && (userDoc().data.role == "gestor" || userDoc().data.role == "admin"); }
+
+    match /users/{uid} {
+      allow read: if isSignedIn() && (request.auth.uid == uid || userDoc().data.role == "admin");
+      allow create: if isSignedIn() && request.auth.uid == uid;
+      allow update: if isSignedIn() && (request.auth.uid == uid || userDoc().data.role == "admin");
+      allow delete: if false;
+    }
+
+    match /empresas/{empresaId} {
+      allow read: if sameEmpresa(empresaId);
+      allow write: if isGestor(empresaId);
+
+      match /pendencias/{docId} {
+        allow read: if sameEmpresa(empresaId);
+        allow create: if sameEmpresa(empresaId);
+        allow update, delete: if isGestor(empresaId);
+      }
+
+      match /materiais/{docId} {
+        allow read: if sameEmpresa(empresaId);
+        allow write: if isGestor(empresaId);
+      }
+
+      match /planejamento/{docId} {
+        allow read: if sameEmpresa(empresaId);
+        allow write: if isGestor(empresaId);
+      }
+    }
+
+    match /licencas/{empresaId} {
+      allow read: if sameEmpresa(empresaId) || (isSignedIn() && userDoc().data.role == "admin");
+      allow write: if isSignedIn() && userDoc().data.role == "admin";
+    }
+  }
+}
