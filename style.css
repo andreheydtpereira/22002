@@ -1,0 +1,16 @@
+*{box-sizing:border-box}
+:root{--bg:#061b44;--panel:#0d2c6c;--panel2:#163a85;--line:#2952a3;--accent:#7ab0ff;--text:#fff;--muted:#c8d9ff}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#061b44 0%,#08265b 100%);color:var(--text)}
+.hidden{display:none!important}.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.auth-card,.module-panel,.list-item,.kpi,.carousel .item{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,.18)}
+.auth-card{width:min(500px,100%);padding:18px}.auth-top{width:100%;border-radius:12px;margin-bottom:10px}
+.auth-tabs{display:flex;gap:8px;margin:10px 0}.auth-tabs button{flex:1}.auth-tabs button.active{outline:2px solid var(--accent)}
+input,select,textarea,button{width:100%;border:1px solid var(--line);background:#10265c;color:var(--text);padding:12px;border-radius:12px;margin:6px 0}
+button{cursor:pointer;background:linear-gradient(135deg,#24468f,#5d89ff)}.small-btn{width:auto;display:inline-block;padding:10px 14px}
+#topo img{width:100%;display:block}.header-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px 0}
+#cardCentral{padding:14px;padding-bottom:110px}.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}.kpi{padding:14px}.kpi .num{font-size:28px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.row{display:flex;gap:8px;flex-wrap:wrap}.module-panel{padding:14px;margin-bottom:12px}.list-item{padding:12px;margin:8px 0}
+.badge{display:inline-block;background:var(--panel2);padding:5px 8px;border-radius:999px;margin:4px 6px 0 0;font-size:12px}.muted{color:var(--muted);font-size:13px}
+.carousel{position:fixed;left:0;right:0;bottom:0;display:flex;overflow-x:auto;gap:10px;padding:10px;background:rgba(6,27,68,.96);border-top:1px solid var(--line)}
+.carousel .item{min-width:92px;text-align:center;padding:8px}.carousel .item.active{outline:2px solid var(--accent)}.carousel img{width:38px;height:38px;display:block;margin:0 auto 4px}.carousel span{font-size:12px}
+textarea{min-height:110px;resize:vertical}@media(max-width:760px){.grid,.kpis{grid-template-columns:1fr}}

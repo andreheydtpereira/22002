@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="260">
+<rect width="100%" height="100%" fill="#061b44"/>
+<line x1="0" y1="60" x2="1400" y2="60" stroke="#5d89ff" stroke-width="2"/>
+<line x1="0" y1="200" x2="1400" y2="200" stroke="#24468f" stroke-width="1"/>
+<text x="50%" y="52%" fill="#7fb0ff" font-size="54" text-anchor="middle" font-family="Arial">Visão Geral</text>
+</svg>
